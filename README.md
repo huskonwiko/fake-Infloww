@@ -2,7 +2,7 @@
 
 ## Interface et édition liées (version 2)
 
-Le Dashboard et Creator reports suivent désormais la disposition des captures de référence : navigation noire, résumé par canal, histogramme orange, courbes et répartition des revenus. Le branding Velvet reste distinct. Cliquez directement sur un montant, une barre ou un point, puis validez la nouvelle valeur. Les transactions sources sont ajustées proportionnellement ; totaux, rapports et dépenses des fans se recalculent ensemble. Les pourcentages se modifient en ajustant les ventes de la période courante. Les données existantes dans votre navigateur sont conservées.
+Le Dashboard et Creator reports suivent désormais la disposition des captures de référence : navigation noire, résumé par canal, histogramme orange, courbes et répartition des revenus. La typographie Inter, les libellés et les pictogrammes de la référence ont été repris à la demande de l’utilisateur. Cliquez directement sur un montant, une barre ou un point, puis validez la nouvelle valeur. Les transactions sources sont ajustées proportionnellement ; totaux, rapports et dépenses des fans se recalculent ensemble. Les pourcentages se modifient en ajustant les ventes de la période courante. Les données existantes dans votre navigateur sont conservées.
 
 Les anciens graphiques Studio en mode explicitement personnalisé restent indépendants ; repassez en mode calculé pour modifier des valeurs reliées aux transactions. Les points des graphiques calculés mettent à jour les ventes sources. Les montants nets simulent une commission de 20 %, avec arrondi au centime.
 
@@ -83,4 +83,4 @@ Un Chromium système est détecté sous Linux ; `CHROMIUM_PATH` permet d’indiq
 - `lib/types.ts`, `seed.ts`, `analytics.ts`, `schema.ts`, `store.ts`, `db.ts` : modèle, données, calculs, validation, état et persistance.
 - `tests/` : tests de calculs/persistance et parcours Chromium.
 
-L’identité Velvet est originale. Aucune ressource propriétaire d’Infloww n’est incluse. Sans captures fournies, l’interface est une interprétation du brief ; elle ne prétend pas être une copie visuelle vérifiée d’une interface privée.
+Les captures fournies servent de référence visuelle. Le pictogramme OnlyFans provient du catalogue Simple Icons (CC0) ; la police Inter est servie localement. Voir `public/reference/ATTRIBUTION.md`. Le logiciel demeure un simulateur local indépendant, sans connexion ni affiliation à OnlyFans ou Infloww. La fidélité visuelle a été contrôlée sur les deux écrans fournis, sans revendiquer une égalité pixel par pixel.

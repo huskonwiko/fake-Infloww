@@ -22,8 +22,14 @@ import {
   Pencil,
   Clock3,
   Plus,
+  Lightbulb,
+  Rows3,
+  UserRoundCheck,
+  CircleDollarSign,
+  RefreshCw as RenewalIcon,
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { OnlyFansMark } from './reference-marks';
 import { useStudio } from '@/lib/store';
 import { money, initials } from '@/lib/utils';
 import { periodRange } from '@/lib/analytics';
@@ -38,9 +44,9 @@ const channels: { id: RevenueMetric; label: string; icon: typeof Users; color: s
   { id: 'subscriptions', label: 'Subscriptions', icon: BookmarkPlus, color: '#15b9a5' },
   { id: 'posts', label: 'Posts', icon: FileText, color: '#1fb999' },
   { id: 'messages', label: 'Messages', icon: MessageCircle, color: '#b35bdf' },
-  { id: 'tips', label: 'Tips', icon: Gift, color: '#375dff' },
-  { id: 'referrals', label: 'Referrals', icon: Award, color: '#e76160' },
-  { id: 'streams', label: 'Streams', icon: Radio, color: '#365aff' },
+  { id: 'tips', label: 'Tips', icon: Lightbulb, color: '#375dff' },
+  { id: 'referrals', label: 'Referrals', icon: UserRoundCheck, color: '#e76160' },
+  { id: 'streams', label: 'Streams', icon: Rows3, color: '#365aff' },
 ];
 const periods: Period[] = [
   'Today',
@@ -137,7 +143,7 @@ export function ReferenceDashboard({ onNavigate }: { onNavigate: (p: string) => 
         <div className="ref-summary-grid">
           <div className="ref-total">
             <span className="ref-total-emblem">
-              <Sparkles size={27} />
+              <OnlyFansMark size={30} />
             </span>
             <span className="ref-total-label">Total earnings</span>
             <LinkedValue metric="total" scope={scope} label="Total earnings" className="ref-total-number" />
@@ -513,7 +519,7 @@ export function CreatorReports({ onNavigate }: { onNavigate: (p: string) => void
       <section className="ref-panel ref-report-summary">
         <div className="ref-report-total">
           <span>
-            <Sparkles size={21} /> Total earnings
+            <OnlyFansMark size={25} /> Total earnings
           </span>
           <LinkedValue label="Total earnings" metric="total" scope={scope} />
           <LinkedChange label="Total earnings" metric="total" scope={scope} />
@@ -525,7 +531,13 @@ export function CreatorReports({ onNavigate }: { onNavigate: (p: string) => void
             return (
               <div key={c.id} className="ref-report-category">
                 <span>
-                  <Icon size={19} />
+                  {c.id === 'subscriptions' ? (
+                    <RenewalIcon size={22} />
+                  ) : c.id === 'tips' ? (
+                    <CircleDollarSign size={22} />
+                  ) : (
+                    <Icon size={22} />
+                  )}
                   {c.label}
                 </span>
                 <LinkedValue label={`${c.label} earnings`} metric={c.id} scope={scope} />

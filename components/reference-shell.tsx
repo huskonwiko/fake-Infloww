@@ -23,7 +23,12 @@ import {
   PanelLeft,
   Sparkles,
   X,
+  SquareUserRound,
+  ContactRound,
+  ExternalLink,
+  ArrowLeftRight,
 } from 'lucide-react';
+import { OnlyFansMark } from './reference-marks';
 import { useStudio } from '@/lib/store';
 import { initials, download } from '@/lib/utils';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from './ui/dialog';
@@ -39,7 +44,7 @@ export function ReferenceShell({
 }) {
   const s = useStudio();
   const [mobile, setMobile] = useState(false);
-  const [expanded, setExpanded] = useState<string[]>(['Analytics']);
+  const [expanded, setExpanded] = useState<string[]>([]);
   const [clock, setClock] = useState(false);
   const [help, setHelp] = useState(false);
   const [emp, setEmp] = useState(s.scenario.employees[0]?.id ?? '');
@@ -50,9 +55,9 @@ export function ReferenceShell({
   const rows = [
     { label: 'Dashboard', id: 'overview', icon: LayoutDashboard },
     {
-      label: 'Creator manager',
+      label: 'OF Manager',
       id: 'creators',
-      icon: Link,
+      icon: OnlyFansMark,
       children: [
         ['creators', 'All creators'],
         ['creator-profiles', 'Creator profiles'],
@@ -80,11 +85,11 @@ export function ReferenceShell({
         ['segmentation', 'Fan segmentation'],
       ],
     },
-    { label: 'Share for Share', id: 'tracking-links', icon: Link },
+    { label: 'Share for Share', id: 'tracking-links', icon: ArrowLeftRight },
     {
       label: 'Creators',
       id: 'creator-profiles',
-      icon: UserRound,
+      icon: SquareUserRound,
       children: [
         ['creator-profiles', 'Creator profiles'],
         ['creator-analytics', 'Creator analytics'],
@@ -93,7 +98,7 @@ export function ReferenceShell({
     {
       label: 'Employees',
       id: 'employees',
-      icon: Users,
+      icon: ContactRound,
       children: [
         ['employees', 'Chatters'],
         ['employee-performance', 'Performance'],
@@ -107,7 +112,11 @@ export function ReferenceShell({
         <button aria-label="Toggle sidebar" className="ref-sidebar-toggle" onClick={() => setMobile(!mobile)}>
           <PanelLeft size={19} />
         </button>
-        <span className="ref-brand">velvet</span>
+        <span className="ref-window-dots" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
         <div className="ref-top-actions">
           <details>
             <summary>
@@ -193,8 +202,8 @@ export function ReferenceShell({
       )}
       <aside className={`reference-sidebar ${mobile ? 'open' : ''}`}>
         <button className="ref-workspace-select" onClick={() => nav('scenarios')}>
-          <Sparkles size={23} />
-          <strong>Velvet Studio</strong>
+          <OnlyFansMark size={26} />
+          <strong>OnlyFans</strong>
           <i />
           <ChevronDown size={18} />
         </button>
@@ -216,13 +225,14 @@ export function ReferenceShell({
                 {r.label === 'Messages Pro' && (
                   <b className="ref-pink-badge">{s.scenario.fans.filter((f) => f.unread > 0).length}</b>
                 )}
+                {r.label === 'Messages Pro' && <ExternalLink size={18} className="ref-messages-open" />}
                 {r.children && <ChevronDown size={17} />}
               </button>
               {r.children && (expanded.includes(r.label) || r.children.some((c) => c[0] === page)) && (
                 <div className="ref-nav-children">
                   {r.children.map(([id, label]) => (
                     <button key={id} className={page === id ? 'active' : ''} onClick={() => nav(id)}>
-                      <UserRound size={17} />
+                      <SquareUserRound size={19} />
                       {label}
                     </button>
                   ))}
@@ -233,18 +243,15 @@ export function ReferenceShell({
         </nav>
         <div className="reference-sidebar-bottom">
           <button onClick={() => nav('general')}>
-            <Settings size={20} />
+            <SlidersHorizontal size={20} />
             Settings
           </button>
-          <button onClick={() => nav('studio')}>
-            <SlidersHorizontal size={20} />
-            Studio Editor
-          </button>
+
           <button onClick={() => setHelp(true)}>
             <HelpCircle size={20} />
             Help center
           </button>
-          <small>Velvet 2.0 · Demo data · Saved locally</small>
+          <small>Local simulator · Demo data</small>
         </div>
       </aside>
       <div className="reference-content page-content">

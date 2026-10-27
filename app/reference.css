@@ -1242,3 +1242,439 @@
     font-size: 10px;
   }
 }
+
+/* Reference-specific typography and spacing, measured against the supplied desktop captures. */
+.reference-app {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  --bg: #0e0e0e;
+  --panel: #181818;
+  --accent: #3572ff;
+  --text: #f5f5f5;
+  --sidebar-width: clamp(235px, 15vw, 296px);
+}
+.reference-topbar {
+  height: 66px;
+  background: #000;
+  padding-left: 94px;
+  gap: 0;
+}
+.ref-sidebar-toggle {
+  padding: 9px;
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  background: #0c0c0c;
+}
+.ref-window-dots {
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.ref-window-dots i {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #626262;
+}
+.ref-top-actions {
+  gap: 8px;
+}
+.ref-top-actions > button,
+.ref-top-actions summary,
+.ref-utc {
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.ref-top-actions .ref-user-avatar {
+  height: 34px;
+  width: 34px;
+  font-weight: 500;
+}
+.reference-sidebar {
+  top: 66px;
+  padding-top: 14px;
+}
+.reference-content {
+  padding-top: 85px;
+  border-left: 1px solid #222;
+}
+.ref-workspace-select {
+  height: 55px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  background: #191919;
+}
+.ref-workspace-select > svg:first-child {
+  color: #00aff0;
+}
+.ref-nav-row > button {
+  font-weight: 500;
+  min-height: 44px;
+  color: #a1a1a1;
+  border-radius: 9px;
+}
+.ref-nav-row > button.active,
+.ref-nav-children > button.active {
+  background: #101010;
+  color: #f5f5f5;
+}
+.ref-nav-separated {
+  margin-top: 18px;
+  padding-top: 19px;
+}
+.reference-sidebar-bottom {
+  border-top: 1px solid #202020;
+  padding-top: 20px;
+}
+.reference-sidebar-bottom button {
+  font-size: 15px;
+  padding: 11px;
+}
+.reference-sidebar-bottom small {
+  margin-top: 26px;
+  font-size: 11px;
+}
+.reference-app h1 {
+  font-weight: 500;
+  font-size: 27px;
+  letter-spacing: -0.65px;
+}
+.ref-overview-heading h1 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+.ref-overview-heading {
+  padding: 25px 27px 18px;
+}
+.ref-summary-grid {
+  grid-template-columns: 24% 1fr;
+  min-height: 210px;
+}
+.ref-total {
+  padding-top: 21px;
+  padding-bottom: 17px;
+  gap: 12px;
+}
+.ref-total-emblem {
+  height: 49px;
+  width: 49px;
+  background: #2c77ff;
+}
+.ref-total-label {
+  font-size: 13px;
+  color: #2585ff;
+}
+.ref-total-number {
+  font-size: 36px;
+  letter-spacing: 0.1px;
+  font-weight: 600;
+  color: #2d75ff;
+}
+.ref-channel-icon {
+  height: 49px;
+  width: 49px;
+}
+.ref-summary-category > div > span {
+  font-size: 12px;
+  color: #858585;
+}
+.ref-editable-value {
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+.ref-summary-category .ref-editable-value {
+  font-size: 24px;
+}
+.ref-category-pair {
+  padding: 15px 30px;
+}
+.ref-card-heading h2 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.ref-report-total > span,
+.ref-report-category > span {
+  font-size: 18px;
+  letter-spacing: -0.4px;
+  color: #a0a0a0;
+}
+.ref-report-summary {
+  min-height: 220px;
+  padding: 25px 30px 23px;
+}
+.ref-report-total .ref-editable-value {
+  font-size: 37px;
+  letter-spacing: 0.1px;
+}
+.ref-report-category .ref-editable-value {
+  font-size: 29px;
+  letter-spacing: 0.1px;
+}
+.ref-evolution {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+}
+.ref-evolution.negative {
+  color: #f74c9a;
+}
+.ref-reset-filters {
+  color: #f07b4b;
+}
+.ref-net-toggle > button.on {
+  background: #ff8057;
+}
+.ref-report-tabs button {
+  font-size: 16px;
+  padding: 9px 13px;
+}
+.ref-section-title {
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.5px !important;
+}
+.ref-report-filters {
+  gap: 17px;
+}
+.ref-date-picker summary,
+.ref-tag-filter select {
+  font-size: 13px;
+}
+.ref-net-toggle {
+  font-size: 15px;
+}
+.ref-chart-edit-dates {
+  opacity: 0.65;
+}
+.ref-chart-canvas .recharts-rectangle:focus {
+  outline: none;
+  stroke: #fff;
+}
+@media (min-width: 1700px) {
+  .reference-topbar {
+    height: 66px;
+  }
+  .reference-sidebar {
+    top: 66px;
+  }
+  .reference-content {
+    padding-top: 85px;
+  }
+  .ref-top-actions > button,
+  .ref-top-actions summary,
+  .ref-utc {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
+  .reference-sidebar nav button {
+    font-size: 18px;
+    font-weight: 500;
+    min-height: 47px;
+  }
+  .ref-nav-children > button {
+    font-size: 17px !important;
+    min-height: 43px !important;
+  }
+  .ref-workspace-select {
+    font-size: 18px;
+  }
+  .ref-overview-heading h1 {
+    font-size: 18px;
+  }
+  .ref-summary-grid {
+    min-height: 225px;
+  }
+  .ref-total-number {
+    font-size: 40px;
+  }
+  .ref-summary-category .ref-editable-value {
+    font-size: 25px;
+  }
+  .ref-report-summary {
+    min-height: 262px;
+  }
+  .ref-report-category .ref-editable-value {
+    font-size: 34px;
+  }
+  .ref-report-total .ref-editable-value {
+    font-size: 40px;
+  }
+  .ref-report-total > span,
+  .ref-report-category > span {
+    font-size: 22px;
+  }
+  .ref-evolution {
+    font-size: 23px;
+  }
+  .ref-section-title {
+    font-size: 23px !important;
+  }
+  .ref-report-category-grid {
+    column-gap: 33px;
+  }
+  .reference-sidebar-bottom button {
+    font-size: 18px;
+  }
+  .ref-dashboard-grid {
+    grid-template-columns: 277px minmax(0, 1fr);
+  }
+  .ref-card-heading h2 {
+    font-size: 18px;
+  }
+  .ref-chart-canvas {
+    height: 325px;
+  }
+}
+@media (max-width: 1200px) {
+  .ref-top-actions > button,
+  .ref-top-actions summary,
+  .ref-utc {
+    font-size: 11px;
+    padding: 8px;
+  }
+  .ref-category-pair {
+    padding: 12px 16px;
+  }
+  .ref-summary-category .ref-editable-value {
+    font-size: 22px;
+  }
+  .ref-report-category > span {
+    font-size: 15px;
+  }
+  .ref-report-total > span {
+    font-size: 16px;
+  }
+  .ref-report-total .ref-editable-value {
+    font-size: 32px;
+  }
+  .ref-report-category .ref-editable-value {
+    font-size: 27px;
+  }
+}
+@media (max-width: 850px) {
+  .reference-topbar {
+    padding-left: 15px;
+  }
+  .ref-window-dots {
+    display: none;
+  }
+  .reference-app {
+    --sidebar-width: 240px;
+  }
+  .reference-content {
+    border-left: 0;
+    padding-top: 82px;
+  }
+  .reference-sidebar {
+    top: 66px;
+  }
+  .ref-top-actions > button,
+  .ref-top-actions summary {
+    font-size: 11px;
+  }
+  .ref-category-pair {
+    padding: 10px;
+  }
+  .ref-total-number {
+    font-size: 28px;
+  }
+  .ref-report-category > span {
+    font-size: 14px;
+  }
+  .ref-summary-category .ref-editable-value {
+    font-size: 21px;
+  }
+}
+@media (max-width: 480px) {
+  .ref-top-actions > button {
+    font-size: 10px;
+  }
+  .ref-overview-heading h1 {
+    font-size: 14px;
+  }
+  .ref-overview-heading {
+    padding: 18px 15px 12px;
+  }
+  .ref-summary-grid {
+    min-height: 0;
+    display: flex;
+  }
+  .ref-total {
+    padding: 10px 0 17px;
+    gap: 8px 12px;
+  }
+  .ref-total-emblem {
+    width: 35px;
+    height: 35px;
+  }
+  .ref-total-emblem svg {
+    width: 25px;
+  }
+  .ref-total-label {
+    font-size: 10px;
+  }
+  .ref-summary-category > div > span {
+    font-size: 9px;
+  }
+  .ref-summary-category .ref-editable-value {
+    font-size: 17px;
+  }
+  .ref-category-pair {
+    padding: 0 9px;
+  }
+  .ref-report-summary {
+    padding: 20px;
+  }
+  .ref-report-total .ref-editable-value {
+    font-size: 32px;
+  }
+  .ref-report-category .ref-editable-value {
+    font-size: 24px;
+  }
+  .ref-evolution {
+    font-size: 15px;
+  }
+  .ref-report-total > span,
+  .ref-report-category > span {
+    font-size: 14px;
+  }
+  .ref-net-toggle {
+    font-size: 13px;
+  }
+}
+.ref-nav-row:has(.ref-messages-open) {
+  margin-bottom: 8px;
+}
+.ref-messages-open {
+  box-sizing: content-box;
+  padding: 5px;
+  border-radius: 6px;
+  background: #171717;
+  color: #eee;
+}
+@media (min-width: 1700px) {
+  .ref-summary-grid {
+    grid-template-columns: 24.9% 1fr;
+    min-height: 226px;
+  }
+  .ref-total {
+    padding-left: 28px;
+  }
+  .ref-category-pair {
+    padding-left: 42px;
+    padding-right: 50px;
+  }
+  .ref-dashboard-grid {
+    margin-top: 18px;
+  }
+}
