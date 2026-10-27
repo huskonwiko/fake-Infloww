@@ -41,6 +41,9 @@ test('revenue totals, category sums and platform fee are calculated in cents', (
     messages: 20.02,
     tips: 30.03,
     ppv: 40.04,
+    posts: 0,
+    referrals: 0,
+    streams: 0,
   });
 });
 test('periods include the selected day, respect leap years and previous month boundaries', () => {

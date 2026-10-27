@@ -242,7 +242,15 @@ export function CrmPage({ page }: { page: string }) {
     options('fanId', 'Fan', s.fans),
     options('employeeId', 'Employee', s.employees),
     date('date', 'Date'),
-    status('category', 'Revenue category', ['subscription', 'message', 'tip', 'ppv']),
+    status('category', 'Revenue category', [
+      'subscription',
+      'message',
+      'tip',
+      'ppv',
+      'post',
+      'referral',
+      'stream',
+    ]),
     numeric('amount', 'Amount'),
   ];
   const transactionColumns: EntityColumn[] = [
@@ -452,14 +460,16 @@ export function CrmPage({ page }: { page: string }) {
           page === 'creator-analytics' || page === 'creator-reports'
             ? [
                 ...creatorColumns,
-                ...(['subscription', 'message', 'tip', 'ppv'] as const).map((category) => ({
-                  key: category,
-                  label: category === 'ppv' ? 'PPV' : category.charAt(0).toUpperCase() + category.slice(1),
-                  sortValue: (r: EntityRow) =>
-                    sum(ts.filter((t) => t.creatorId === r.id && t.category === category)),
-                  render: (r: EntityRow) =>
-                    money(sum(ts.filter((t) => t.creatorId === r.id && t.category === category)), currency),
-                })),
+                ...(['subscription', 'message', 'tip', 'ppv', 'post', 'referral', 'stream'] as const).map(
+                  (category) => ({
+                    key: category,
+                    label: category === 'ppv' ? 'PPV' : category.charAt(0).toUpperCase() + category.slice(1),
+                    sortValue: (r: EntityRow) =>
+                      sum(ts.filter((t) => t.creatorId === r.id && t.category === category)),
+                    render: (r: EntityRow) =>
+                      money(sum(ts.filter((t) => t.creatorId === r.id && t.category === category)), currency),
+                  }),
+                ),
               ]
             : creatorColumns,
           creatorFields,
@@ -489,17 +499,19 @@ export function CrmPage({ page }: { page: string }) {
                       creatorId={c.id}
                       compact
                     />
-                    {['subscription', 'message', 'tip', 'ppv'].map((category) => (
-                      <div className="profile-metric" key={category}>
-                        <span>{category}</span>
-                        <strong>
-                          {money(
-                            sum(ts.filter((t) => t.creatorId === c.id && t.category === category)),
-                            currency,
-                          )}
-                        </strong>
-                      </div>
-                    ))}
+                    {['subscription', 'message', 'tip', 'ppv', 'post', 'referral', 'stream'].map(
+                      (category) => (
+                        <div className="profile-metric" key={category}>
+                          <span>{category}</span>
+                          <strong>
+                            {money(
+                              sum(ts.filter((t) => t.creatorId === c.id && t.category === category)),
+                              currency,
+                            )}
+                          </strong>
+                        </div>
+                      ),
+                    )}
                     <p className="muted">
                       Joined {c.addedAt.slice(0, 10)} · {period}
                     </p>
@@ -581,12 +593,17 @@ export function CrmPage({ page }: { page: string }) {
             },
             ...employeeColumns,
             ...(page === 'employee-reports'
-              ? (['subscription', 'message', 'tip', 'ppv'] as const).map((category) => ({
-                  key: category,
-                  label: category === 'ppv' ? 'PPV' : category.charAt(0).toUpperCase() + category.slice(1),
-                  render: (r: EntityRow) =>
-                    money(sum(ts.filter((t) => t.employeeId === r.id && t.category === category)), currency),
-                }))
+              ? (['subscription', 'message', 'tip', 'ppv', 'post', 'referral', 'stream'] as const).map(
+                  (category) => ({
+                    key: category,
+                    label: category === 'ppv' ? 'PPV' : category.charAt(0).toUpperCase() + category.slice(1),
+                    render: (r: EntityRow) =>
+                      money(
+                        sum(ts.filter((t) => t.employeeId === r.id && t.category === category)),
+                        currency,
+                      ),
+                  }),
+                )
               : []),
           ],
           employeeFields,

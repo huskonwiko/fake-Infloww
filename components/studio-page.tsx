@@ -50,7 +50,11 @@ const sheets: Record<SheetName, Column[]> = {
     { key: 'fanId', label: 'Fan', reference: 'fans' },
     { key: 'employeeId', label: 'Employee', reference: 'employees' },
     { key: 'date', label: 'Date', type: 'datetime-local' },
-    { key: 'category', label: 'Category', choices: ['subscription', 'message', 'tip', 'ppv'] },
+    {
+      key: 'category',
+      label: 'Category',
+      choices: ['subscription', 'message', 'tip', 'ppv', 'post', 'referral', 'stream'],
+    },
     { key: 'amount', label: 'Amount', type: 'number' },
   ],
   creators: [

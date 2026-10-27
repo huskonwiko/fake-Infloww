@@ -41,6 +41,7 @@ const clone = <T>(value: T): T => structuredClone(value);
 const creatorFor = (scenario: Scenario, id: string) =>
   id === 'all' || scenario.creators.some((c) => c.id === id) ? id : 'all';
 const periods: Period[] = [
+  'This Week',
   'Today',
   'Yesterday',
   'Last 7 days',

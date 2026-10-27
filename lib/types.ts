@@ -1,5 +1,6 @@
-export type Category = 'subscription' | 'message' | 'tip' | 'ppv';
+export type Category = 'subscription' | 'message' | 'tip' | 'ppv' | 'post' | 'referral' | 'stream';
 export interface Creator {
+  tags?: string[];
   id: string;
   name: string;
   handle: string;
@@ -121,8 +122,22 @@ export interface Scenario {
   charts: Record<string, ChartConfig>;
   overrides: Record<string, Override>;
   widgetOrder: string[];
-  settings: { agencyName: string; currency: string; theme: 'dark' | 'light' };
+  settings: {
+    agencyName: string;
+    currency: string;
+    theme: 'dark' | 'light';
+    netEarnings?: boolean;
+    sfw?: boolean;
+    clockedIn?: { employeeId: string; startedAt: string }[];
+  };
 }
 export type Period =
-  'Today' | 'Yesterday' | 'Last 7 days' | 'Last 30 days' | 'This Month' | 'Last Month' | 'Custom Date';
+  | 'Today'
+  | 'This Week'
+  | 'Yesterday'
+  | 'Last 7 days'
+  | 'Last 30 days'
+  | 'This Month'
+  | 'Last Month'
+  | 'Custom Date';
 export type UpdateScenario = (recipe: (draft: Scenario) => void) => void;

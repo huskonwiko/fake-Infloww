@@ -1,5 +1,13 @@
 # Velvet — CRM Studio
 
+## Interface et édition liées (version 2)
+
+Le Dashboard et Creator reports suivent désormais la disposition des captures de référence : navigation noire, résumé par canal, histogramme orange, courbes et répartition des revenus. Le branding Velvet reste distinct. Cliquez directement sur un montant, une barre ou un point, puis validez la nouvelle valeur. Les transactions sources sont ajustées proportionnellement ; totaux, rapports et dépenses des fans se recalculent ensemble. Les pourcentages se modifient en ajustant les ventes de la période courante. Les données existantes dans votre navigateur sont conservées.
+
+Les anciens graphiques Studio en mode explicitement personnalisé restent indépendants ; repassez en mode calculé pour modifier des valeurs reliées aux transactions. Les points des graphiques calculés mettent à jour les ventes sources. Les montants nets simulent une commission de 20 %, avec arrondi au centime.
+
+Pour installer une mise à jour depuis un ZIP : exportez vos scénarios JSON par précaution, arrêtez votre serveur avec Ctrl+C, décompressez le nouveau ZIP, ouvrez un Terminal dans ce nouveau dossier, puis lancez `npm ci` et `npm run dev`. Réutilisez la même adresse et le même port pour retrouver le stockage du navigateur.
+
 CRM indépendant de simulation, construit avec Next.js, React, TypeScript, Tailwind CSS, des composants UI de style shadcn/Radix, Recharts, Zustand, Dexie, dnd-kit, Zod et Lucide. Aucune API OnlyFans ou Infloww, aucun compte et aucune donnée réelle ne sont nécessaires.
 
 ## Lancer sur votre ordinateur

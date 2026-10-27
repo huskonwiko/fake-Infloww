@@ -27,17 +27,18 @@ async function route(id) {
   await page.waitForTimeout(200);
 }
 async function persisted() {
-  await page.getByText('All changes saved', { exact: true }).waitFor();
+  await page.locator('.save-state.saved').waitFor();
 }
 async function earnings() {
   await route('overview');
-  return num(
-    await page.locator('.kpi-card').filter({ hasText: 'Total earnings' }).locator('.kpi-value').innerText(),
-  );
+  return num(await page.locator('.ref-earnings-summary [data-testid=linked-value-total]').innerText());
 }
 try {
   await route('overview');
-  await page.getByRole('button', { name: 'EDIT MODE', exact: true }).click();
+  await page.getByLabel('Earnings basis').selectOption('gross');
+  await page.getByLabel('Workspace actions').click();
+  await page.getByRole('button', { name: /EDIT MODE/ }).click();
+  await page.getByLabel('Workspace actions').click();
   const baseline = await earnings();
   await route('transactions');
   await page.getByRole('button', { name: 'Add record', exact: true }).click();

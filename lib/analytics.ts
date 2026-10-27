@@ -18,6 +18,10 @@ export function periodRange(period: Period, customRange?: Range, now = new Date(
       throw new Error('Date range cannot exceed ten years.');
     return customRange;
   }
+  if (period === 'This Week') {
+    const back = (today.getUTCDay() + 6) % 7;
+    return { from: iso(new Date(+today - back * day)), to: iso(today) };
+  }
   if (period === 'Yesterday') {
     const yesterday = new Date(+today - day);
     return { from: iso(yesterday), to: iso(yesterday) };
@@ -59,6 +63,9 @@ export function calculateRevenue(transactions: Transaction[]) {
     messages: sum('message'),
     tips: sum('tip'),
     ppv: sum('ppv'),
+    posts: sum('post'),
+    referrals: sum('referral'),
+    streams: sum('stream'),
   };
 }
 export function chartData(

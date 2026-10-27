@@ -245,7 +245,19 @@ export function EntityTable({
               {filtered.slice(safePage * 15, (safePage + 1) * 15).map((row) => (
                 <tr key={row.id}>
                   {columns.map((c) => (
-                    <td key={c.key}>{c.render ? c.render(row) : String(row[c.key] ?? '—')}</td>
+                    <td
+                      key={c.key}
+                      tabIndex={0}
+                      onClick={(e) => {
+                        if (!(e.target as HTMLElement).closest('button,a,input,textarea,select')) open(row);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && e.target === e.currentTarget) open(row);
+                      }}
+                      title="Click to edit record"
+                    >
+                      {c.render ? c.render(row) : String(row[c.key] ?? '—')}
+                    </td>
                   ))}
                   {editable && (
                     <td>

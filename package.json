@@ -8,7 +8,7 @@
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test": "node --import fake-indexeddb/auto --import tsx --test --test-isolation=none tests/*.test.ts",
-    "test:browser": "node tests/browser-charts.mjs && node tests/browser-crm.mjs && node tests/browser-messages.mjs && node tests/browser-studio.mjs",
+    "test:browser": "node tests/browser-linked.mjs && node tests/browser-crm.mjs && node tests/browser-messages.mjs && node tests/browser-studio.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

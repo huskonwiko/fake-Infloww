@@ -1,4 +1,4 @@
-import { StudioApp } from '@/components/studio-app';
+import { ReferenceApp } from '@/components/reference-app';
 export default function Home() {
-  return <StudioApp />;
+  return <ReferenceApp />;
 }

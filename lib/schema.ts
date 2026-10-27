@@ -31,7 +31,15 @@ const image = z
     'Images must be local PNG, JPEG, WebP or GIF data.',
   );
 const color = z.string().regex(/^#[0-9a-fA-F]{6}$/, 'Use a six-digit hex color.');
-const creator = z.object({ id, name, handle: name, avatar: image, color, addedAt: date });
+const creator = z.object({
+  id,
+  name,
+  handle: name,
+  avatar: image,
+  color,
+  addedAt: date,
+  tags: z.array(name).optional(),
+});
 const employee = z.object({
   id,
   name,
@@ -59,7 +67,7 @@ const transaction = z.object({
   fanId: id,
   employeeId: id,
   date: timestamp,
-  category: z.enum(['subscription', 'message', 'tip', 'ppv']),
+  category: z.enum(['subscription', 'message', 'tip', 'ppv', 'post', 'referral', 'stream']),
   amount: number,
 });
 const message = z.object({
@@ -151,6 +159,9 @@ export const scenarioSchema = z
       agencyName: name,
       currency: z.enum(['USD', 'EUR', 'GBP', 'CAD', 'AUD']),
       theme: z.enum(['dark', 'light']),
+      netEarnings: z.boolean().optional(),
+      sfw: z.boolean().optional(),
+      clockedIn: z.array(z.object({ employeeId: id, startedAt: timestamp })).optional(),
     }),
   })
   .superRefine((scenario, ctx) => {

@@ -16,6 +16,7 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartNoAxesCombined, Check, Download, Grip, Plus, Settings2, Trash2, Upload, X } from 'lucide-react';
+import { reconcileRevenue, type RevenueMetric } from '@/lib/reconcile';
 import { useStudio } from '@/lib/store';
 import { chartData } from '@/lib/analytics';
 import { download, money, uid } from '@/lib/utils';
@@ -464,7 +465,26 @@ export function ChartPanel({
     });
   };
   const setPoint = (id: string, series: string, value: number) => {
-    if (!Number.isFinite(value)) return;
+    if (!Number.isFinite(value) || value < 0) return;
+    const mapping: Record<string, RevenueMetric> = {
+      revenue: 'total',
+      messages: 'messageOnly',
+      subscriptions: 'subscriptions',
+      tips: 'tips',
+      ppv: 'ppv',
+    };
+    const point = config.points.find((p) => p.id === id);
+    if (!config.manual && point && mapping[series]) {
+      updateScenario((d) =>
+        reconcileRevenue(
+          d,
+          { creatorId: selectedCreator, employeeId, from: point.date, to: point.date },
+          mapping[series],
+          value,
+        ),
+      );
+      return;
+    }
     patch((d) => {
       const p = d.points.find((p) => p.id === id);
       if (p) p.values[series] = value;
